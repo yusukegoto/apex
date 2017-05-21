@@ -7,12 +7,18 @@ import (
 	"github.com/apex/apex/function"
 )
 
-func init() {
-	function.RegisterPlugin("python", &Plugin{})
-}
-
 // Runtime for inference.
-const Runtime = "python3.6"
+const (
+	Runtime   = "python"
+	Runtime27 = "python2.7"
+	Runtime36 = "python3.6"
+)
+
+func init() {
+	function.RegisterPlugin(Runtime, &Plugin{})
+	function.RegisterPlugin(Runtime27, &Plugin{})
+	function.RegisterPlugin(Runtime36, &Plugin{})
+}
 
 // Plugin implementation.
 type Plugin struct{}
